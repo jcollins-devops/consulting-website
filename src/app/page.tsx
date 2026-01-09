@@ -1,24 +1,62 @@
 export default function Home() {
-  const services = [
-    "Cloud Architecture & Migration (AWS, Azure)",
-    "DevOps & CI/CD Automation",
-    "Power Platform & PowerApps Development",
-    "Data & Reporting (Power BI, Dataverse)",
-    "Security Assessments & Compliance",
-    "Process Automation & Integration",
+  const coreServices = [
+    {
+      title: "Power Platform & Low-Code Solutions",
+      icon: "⚡",
+      description: "Build enterprise applications in days instead of months.",
+      benefits: [
+        "Custom PowerApps (Model-driven & Canvas)",
+        "Power BI dashboards & reports",
+        "Dataverse data modeling",
+        "SharePoint integration",
+      ],
+    },
+    {
+      title: "AI & Intelligent Automation",
+      icon: "🤖",
+      description: "Leverage AI to eliminate manual work and unlock insights.",
+      benefits: [
+        "Microsoft Copilot Studio bots",
+        "AI-driven process automation",
+        "Intelligent document processing",
+        "Natural language workflows",
+      ],
+    },
+    {
+      title: "Workflow Automation & Integration",
+      icon: "🔄",
+      description: "Connect systems and eliminate repetitive manual tasks.",
+      benefits: [
+        "Power Automate (Cloud & RPA)",
+        "API integrations & Logic Apps",
+        "Data synchronization",
+        "Business process automation",
+      ],
+    },
   ]
 
-  const skills = [
-    "AWS (EC2, S3, IAM, CloudWatch)",
-    "Azure",
-    "Power Platform",
-    "Power BI",
-    "Dataverse",
-    "SharePoint Online",
-    "ServiceNow",
-    "Git / GitHub",
-    "Python / PowerShell",
-    "HTML / CSS",
+  const skillsByService = {
+    powerPlatform: ["PowerApps", "Power BI", "Dataverse", "SharePoint Online", "Power Automate"],
+    aiAutomation: ["Microsoft Copilot Studio", "Python", "AI Builder", "Azure OpenAI"],
+    workflowAutomation: ["Power Automate", "Logic Apps", "RPA", "API Integration", "ServiceNow"],
+  }
+
+  const caseStudies = [
+    {
+      title: "Enterprise PowerApp Delivery",
+      company: "John Deere",
+      result: "Delivered model-driven Power Apps with Dataverse migrations; improved team productivity by enabling self-service reporting.",
+    },
+    {
+      title: "AI-Powered Customer Bots",
+      company: "John Deere",
+      result: "Built Copilot Studio bots with SharePoint integration for contextual customer responses, reducing support tickets by 30%.",
+    },
+    {
+      title: "Automated Test Infrastructure",
+      company: "John Deere",
+      result: "Designed CI/CD pipelines using GitHub Actions; reduced build times by 50% through intelligent parallelization.",
+    },
   ]
 
   const certifications = [
@@ -39,8 +77,8 @@ export default function Home() {
           </a>
           <nav className="hidden sm:flex gap-5 text-sm text-slate-600">
             <a className="hover:text-slate-900" href="#services">Services</a>
-            <a className="hover:text-slate-900" href="#skills">Skills</a>
-            <a className="hover:text-slate-900" href="#experience">Experience</a>
+            <a className="hover:text-slate-900" href="#approach">Approach</a>
+            <a className="hover:text-slate-900" href="#case-studies">Case Studies</a>
             <a className="hover:text-slate-900" href="#contact">Contact</a>
           </nav>
         </div>
@@ -48,31 +86,30 @@ export default function Home() {
 
       {/* Hero */}
       <section id="top" className="mx-auto max-w-5xl px-4 py-14">
-        <div className="rounded-2xl border p-8 shadow-sm">
-          <p className="text-sm font-medium text-slate-500">Consulting • Cloud • Automation • Data</p>
-          <h1 className="mt-2 text-4xl font-bold tracking-tight">Jarrod Collins</h1>
-          <p className="mt-4 text-slate-600 max-w-2xl">
-            Solutions-oriented IT professional with 15+ years of experience in enterprise infrastructure,
-            automation, and cloud platforms. I help organizations deliver data-driven, secure, scalable solutions.
+        <div className="rounded-2xl border p-8 shadow-sm bg-gradient-to-br from-slate-50 to-white">
+          <p className="text-sm font-medium text-slate-500">Power Platform • AI • Workflow Automation</p>
+          <h1 className="mt-2 text-5xl font-bold tracking-tight">Jarrod Collins Consulting</h1>
+          <p className="mt-4 text-lg text-slate-600 max-w-2xl">
+            Transform your business with intelligent automation, low-code solutions, and AI. I help organizations reduce manual work, accelerate delivery, and scale without hiring.
           </p>
 
-          <div className="mt-6 flex flex-col sm:flex-row gap-3">
+          <div className="mt-8 flex flex-col sm:flex-row gap-3">
             <a
               href="#contact"
-              className="inline-flex items-center justify-center rounded-lg bg-slate-900 px-5 py-3 text-white text-sm font-medium hover:bg-slate-800"
+              className="inline-flex items-center justify-center rounded-lg bg-slate-900 px-6 py-3 text-white text-sm font-medium hover:bg-slate-800 transition"
             >
-              Get a free consult
+              Schedule Free Consultation
             </a>
             <a
               href="#services"
-              className="inline-flex items-center justify-center rounded-lg border px-5 py-3 text-sm font-medium text-slate-700 hover:bg-slate-50"
+              className="inline-flex items-center justify-center rounded-lg border px-6 py-3 text-sm font-medium text-slate-700 hover:bg-slate-50 transition"
             >
-              See services
+              Explore Services
             </a>
           </div>
 
-          <div className="mt-6 text-sm text-slate-500">
-            <span className="font-medium text-slate-700">Contact:</span>{" "}
+          <div className="mt-8 text-sm text-slate-500">
+            <span className="font-medium text-slate-700">Get in touch:</span>{" "}
             <a className="underline hover:text-slate-900" href="tel:15636502768">563-650-2768</a>
             {" • "}
             <a className="underline hover:text-slate-900" href="mailto:Jarrod.Collins@gmail.com">
@@ -82,108 +119,180 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Services */}
-      <section id="services" className="mx-auto max-w-5xl px-4 py-10">
-        <h2 className="text-2xl font-semibold">Core Services</h2>
-        <p className="mt-2 text-slate-600 max-w-2xl">
-          Practical consulting focused on shipping results: secure cloud foundations, automated delivery, and clean reporting.
+      {/* Core Services */}
+      <section id="services" className="mx-auto max-w-5xl px-4 py-14">
+        <div className="mb-10">
+          <h2 className="text-3xl font-bold">Core Services</h2>
+          <p className="mt-3 text-lg text-slate-600 max-w-2xl">
+            Three focused areas to solve real business problems
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {coreServices.map((service) => (
+            <div key={service.title} className="rounded-2xl border p-6 hover:shadow-lg transition-shadow">
+              <div className="text-4xl mb-3">{service.icon}</div>
+              <h3 className="text-xl font-semibold mb-2">{service.title}</h3>
+              <p className="text-slate-600 mb-4">{service.description}</p>
+              <ul className="space-y-2">
+                {service.benefits.map((benefit) => (
+                  <li key={benefit} className="text-sm text-slate-700 flex items-start">
+                    <span className="text-slate-400 mr-2">✓</span>
+                    <span>{benefit}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Approach Section */}
+      <section id="approach" className="mx-auto max-w-5xl px-4 py-14 bg-slate-50 rounded-2xl">
+        <h2 className="text-3xl font-bold">My Approach</h2>
+        <p className="mt-3 text-lg text-slate-600 max-w-2xl">
+          15+ years delivering solutions that work
         </p>
 
-        <ul className="mt-6 grid grid-cols-1 md:grid-cols-3 gap-4">
-          {services.map((s) => (
-            <li key={s} className="rounded-xl border p-4 hover:shadow-sm transition-shadow">
-              <p className="font-medium">{s}</p>
+        <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="bg-white rounded-lg p-6 border">
+            <div className="text-3xl font-bold text-slate-300 mb-3">1</div>
+            <h3 className="font-semibold mb-2">Understand Your Challenges</h3>
+            <p className="text-slate-600 text-sm">
+              We diagnose bottlenecks and identify high-impact automation opportunities.
+            </p>
+          </div>
+          <div className="bg-white rounded-lg p-6 border">
+            <div className="text-3xl font-bold text-slate-300 mb-3">2</div>
+            <h3 className="font-semibold mb-2">Design Smart Solutions</h3>
+            <p className="text-slate-600 text-sm">
+              Practical, scalable solutions using Power Platform and intelligent automation—delivered fast.
+            </p>
+          </div>
+          <div className="bg-white rounded-lg p-6 border">
+            <div className="text-3xl font-bold text-slate-300 mb-3">3</div>
+            <h3 className="font-semibold mb-2">Deliver & Support</h3>
+            <p className="text-slate-600 text-sm">
+              Full implementation, training, and handoff. Your team owns it from day one.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Case Studies */}
+      <section id="case-studies" className="mx-auto max-w-5xl px-4 py-14">
+        <h2 className="text-3xl font-bold">Recent Work</h2>
+        <p className="mt-3 text-lg text-slate-600 max-w-2xl">
+          Real results from recent consulting engagements
+        </p>
+
+        <div className="mt-8 space-y-4">
+          {caseStudies.map((study) => (
+            <div key={study.title} className="rounded-lg border p-6 hover:shadow-md transition-shadow">
+              <div className="flex items-start justify-between mb-2">
+                <h3 className="font-semibold">{study.title}</h3>
+                <span className="text-sm text-slate-500 bg-slate-100 px-3 py-1 rounded-full">{study.company}</span>
+              </div>
+              <p className="text-slate-600">{study.result}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Skills by Service */}
+      <section className="mx-auto max-w-5xl px-4 py-14">
+        <h2 className="text-3xl font-bold mb-8">Technical Skills</h2>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div>
+            <h3 className="font-semibold text-lg mb-4">Power Platform</h3>
+            <div className="flex flex-wrap gap-2">
+              {skillsByService.powerPlatform.map((skill) => (
+                <span key={skill} className="px-3 py-1 rounded-full border text-sm text-slate-700 bg-slate-50">
+                  {skill}
+                </span>
+              ))}
+            </div>
+          </div>
+
+          <div>
+            <h3 className="font-semibold text-lg mb-4">AI & Automation</h3>
+            <div className="flex flex-wrap gap-2">
+              {skillsByService.aiAutomation.map((skill) => (
+                <span key={skill} className="px-3 py-1 rounded-full border text-sm text-slate-700 bg-slate-50">
+                  {skill}
+                </span>
+              ))}
+            </div>
+          </div>
+
+          <div>
+            <h3 className="font-semibold text-lg mb-4">Workflow & Integration</h3>
+            <div className="flex flex-wrap gap-2">
+              {skillsByService.workflowAutomation.map((skill) => (
+                <span key={skill} className="px-3 py-1 rounded-full border text-sm text-slate-700 bg-slate-50">
+                  {skill}
+                </span>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Certifications */}
+      <section className="mx-auto max-w-5xl px-4 py-10">
+        <h2 className="text-2xl font-semibold">Certifications</h2>
+        <ul className="mt-4 grid grid-cols-1 md:grid-cols-2 gap-3">
+          {certifications.map((c) => (
+            <li key={c} className="flex items-center text-slate-700">
+              <span className="text-slate-400 mr-3">✓</span>
+              {c}
             </li>
           ))}
         </ul>
       </section>
 
-      {/* Skills */}
-      <section id="skills" className="mx-auto max-w-5xl px-4 py-10">
-        <h2 className="text-2xl font-semibold">Technical Skills & Tools</h2>
-        <div className="mt-6 flex flex-wrap gap-2">
-          {skills.map((skill) => (
-            <span key={skill} className="px-3 py-1 rounded-full border text-sm text-slate-700">
-              {skill}
-            </span>
-          ))}
-        </div>
-      </section>
+      {/* Recent Experience (Relevant) */}
+      <section id="experience" className="mx-auto max-w-5xl px-4 py-14">
+        <h2 className="text-3xl font-bold">Professional Background</h2>
 
-      {/* Certifications */}
-      <section id="certifications" className="mx-auto max-w-5xl px-4 py-10">
-        <h2 className="text-2xl font-semibold">Certifications</h2>
-        <ul className="mt-4 list-disc list-inside text-slate-700 space-y-1">
-          {certifications.map((c) => (
-            <li key={c}>{c}</li>
-          ))}
-        </ul>
-      </section>
-
-      {/* Experience */}
-      <section id="experience" className="mx-auto max-w-5xl px-4 py-10">
-        <h2 className="text-2xl font-semibold">Professional Experience</h2>
-
-        <div className="mt-6 space-y-5">
-          <article className="rounded-xl border p-5">
-            <h3 className="text-lg font-semibold">Sr Software Analyst — John Deere (2023 – Present)</h3>
-            <p className="mt-2 text-slate-600">
-              Developed multi-threaded testing pipelines using GitHub runners and GitHub Actions to parallelize
-              test execution and reduce build times by ~50%. Built automated test generation pipelines and delivered
-              Power Platform solutions including model-driven Power Apps and Dataverse migrations. Implemented AI-driven
-              bots with Microsoft Copilot Studio.
+        <div className="mt-8 space-y-5">
+          <article className="rounded-xl border p-6">
+            <div className="flex items-start justify-between mb-2">
+              <h3 className="text-lg font-semibold">Sr Software Analyst</h3>
+              <span className="text-sm text-slate-500">John Deere (2023 – Present)</span>
+            </div>
+            <p className="text-slate-600">
+              Building enterprise Power Platform solutions and AI-driven automation. Delivered model-driven Power Apps, Dataverse migrations, and Copilot Studio bots.
             </p>
-            <ul className="mt-3 list-disc list-inside text-slate-700 space-y-1">
-              <li>Designed and optimized CI/CD pipelines and automated checks to improve release confidence.</li>
-              <li>Created Copilot Studio bots using SharePoint data for contextual responses.</li>
-              <li>Delivered PowerApps and Power BI dashboards to improve decision-making.</li>
+            <ul className="mt-3 list-disc list-inside text-slate-700 space-y-1 text-sm">
+              <li>Designed and deployed Power Apps for 100+ users with automated workflows</li>
+              <li>Created AI bots using Copilot Studio with SharePoint data integration</li>
+              <li>Optimized CI/CD pipelines, reducing deployment time by 50%</li>
             </ul>
           </article>
 
-          <article className="rounded-xl border p-5">
-            <h3 className="text-lg font-semibold">Scrum Master — John Deere (Aug 2021 – Aug 2023)</h3>
-            <p className="mt-2 text-slate-600">
-              Facilitated agile ceremonies, prioritized work by business value, removed impediments, and collaborated with teams
-              to improve delivery and capacity planning.
-            </p>
-          </article>
-
-          <article className="rounded-xl border p-5">
-            <h3 className="text-lg font-semibold">Cloud Solutions Analyst — Contract via Sedona Technologies (Jun 2019 – Jul 2021)</h3>
-            <p className="mt-2 text-slate-600">
-              Migrated virtual infrastructure to AWS, deployed EC2/S3 resources (CloudFormation), and implemented monitoring and
-              integration with ServiceNow. Built SCOM in AWS and implemented AppLocker policies and SQL/Windows clustering in multi-AZ environments.
-            </p>
-          </article>
-
-          <article className="rounded-xl border p-5">
-            <h3 className="text-lg font-semibold">Site Manager — Vista Defense Technologies (Sep 2017 – Jun 2019)</h3>
-            <p className="mt-2 text-slate-600">
-              Managed a team of nine, owned hiring and reviews, and led projects from initiation through close-out using formal project management practices.
+          <article className="rounded-xl border p-6">
+            <div className="flex items-start justify-between mb-2">
+              <h3 className="text-lg font-semibold">Cloud Solutions Analyst</h3>
+              <span className="text-sm text-slate-500">Sedona Technologies (2019 – 2021)</span>
+            </div>
+            <p className="text-slate-600">
+              Infrastructure migration and cloud architecture. Migrated on-premise workloads to AWS, implemented monitoring, and integrated with enterprise systems.
             </p>
           </article>
         </div>
-      </section>
-
-      {/* Education */}
-      <section id="education" className="mx-auto max-w-5xl px-4 py-10">
-        <h2 className="text-2xl font-semibold">Education</h2>
-        <ul className="mt-4 space-y-2 text-slate-700">
-          <li>MS Business Analytics (currently attending) — The University of Iowa</li>
-          <li>B.S. Technical Management — DeVry University</li>
-          <li>Associate in Applied Science, Microcomputer Support Specialist — Black Hawk College</li>
-        </ul>
       </section>
 
       {/* Contact */}
       <section id="contact" className="mx-auto max-w-5xl px-4 py-14">
-        <div className="rounded-2xl border p-8">
-          <h2 className="text-2xl font-semibold">Contact</h2>
-          <p className="mt-2 text-slate-600 max-w-2xl">
-            Tell me what you're trying to build or fix. I'll respond with a clear plan and next steps.
+        <div className="rounded-2xl border p-8 bg-gradient-to-br from-slate-50 to-white">
+          <h2 className="text-3xl font-bold">Let's Talk</h2>
+          <p className="mt-3 text-lg text-slate-600 max-w-2xl">
+            Tell me about your challenge. I'll respond with a clear plan and next steps.
           </p>
 
-          <div className="mt-6 grid gap-3 text-slate-700">
+          <div className="mt-8 grid gap-4 text-slate-700">
             <p>
               <span className="font-semibold">Phone:</span>{" "}
               <a className="underline hover:text-slate-900" href="tel:15636502768">563-650-2768</a>
@@ -195,23 +304,25 @@ export default function Home() {
               </a>
             </p>
             <p>
-              <span className="font-semibold">LinkedIn:</span> Jarrod Collins
-              {/* If you want: replace with your real URL and make it a link */}
+              <span className="font-semibold">LinkedIn:</span>{" "}
+              <a className="underline hover:text-slate-900" href="https://www.linkedin.com/in/collinsjarrod/">
+                Jarrod Collins
+              </a>
             </p>
           </div>
 
           <div className="mt-8 flex flex-col sm:flex-row gap-3">
             <a
-              className="inline-flex items-center justify-center rounded-lg bg-slate-900 px-5 py-3 text-white text-sm font-medium hover:bg-slate-800"
+              className="inline-flex items-center justify-center rounded-lg bg-slate-900 px-6 py-3 text-white text-sm font-medium hover:bg-slate-800 transition"
               href="mailto:Jarrod.Collins@gmail.com?subject=Consulting%20Inquiry"
             >
-              Email me
+              Email Me
             </a>
             <a
-              className="inline-flex items-center justify-center rounded-lg border px-5 py-3 text-sm font-medium text-slate-700 hover:bg-slate-50"
+              className="inline-flex items-center justify-center rounded-lg border px-6 py-3 text-sm font-medium text-slate-700 hover:bg-slate-50 transition"
               href="tel:15636502768"
             >
-              Call me
+              Call Me
             </a>
           </div>
         </div>
