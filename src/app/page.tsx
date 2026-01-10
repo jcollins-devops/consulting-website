@@ -110,8 +110,6 @@ export default function Home() {
 
           <div className="mt-8 text-sm text-slate-500">
             <span className="font-medium text-slate-700">Get in touch:</span>{" "}
-            <a className="underline hover:text-slate-900" href="tel:15636502768">563-650-2768</a>
-            {" • "}
             <a className="underline hover:text-slate-900" href="mailto:Jarrod.Collins@gmail.com">
               Jarrod.Collins@gmail.com
             </a>
@@ -294,10 +292,6 @@ export default function Home() {
 
           <div className="mt-8 grid gap-4 text-slate-700">
             <p>
-              <span className="font-semibold">Phone:</span>{" "}
-              <a className="underline hover:text-slate-900" href="tel:15636502768">563-650-2768</a>
-            </p>
-            <p>
               <span className="font-semibold">Email:</span>{" "}
               <a className="underline hover:text-slate-900" href="mailto:Jarrod.Collins@gmail.com">
                 Jarrod.Collins@gmail.com
@@ -317,12 +311,6 @@ export default function Home() {
               href="mailto:Jarrod.Collins@gmail.com?subject=Consulting%20Inquiry"
             >
               Email Me
-            </a>
-            <a
-              className="inline-flex items-center justify-center rounded-lg border px-6 py-3 text-sm font-medium text-slate-700 hover:bg-slate-50 transition"
-              href="tel:15636502768"
-            >
-              Call Me
             </a>
           </div>
         </div>
